@@ -1,6 +1,18 @@
 # NexusAI-Platform 🤖💼
 > **Autonomous AI Agent Marketplace with Advanced RAG Production Pipeline**
 
+<div align="center">
+  
+  # 🤖 Enterprise GenAI & MLOps Platform
+  <p>پلتفرم پاسخگویی هوشمند و آنی با معماری Advanced RAG و پایش زنده سیستم</p>
+
+  <video src="https://github.com/user-attachments/assets/687bb050-ba3f-49c7-bf98-3a06a1b4eb6e" width="100%" autoplay loop muted playsinline>
+  </video>
+
+</div>
+
+
+
 NexusAI is a professional, high-performance landing page and autonomous sales ecosystem designed for deploying and selling specialized AI Agents (Support, Analyst, and Custom Ops). The architecture bridges a modern, user-friendly frontend directly to an enterprise-grade Retrieval-Augmented Generation (RAG) chatbot backend driven by n8n.
 
 ---
