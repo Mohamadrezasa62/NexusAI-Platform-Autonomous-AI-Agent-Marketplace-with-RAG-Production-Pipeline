@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusAI | Autonomous AI Agents for Business</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131a2c;
+            --accent-color: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Optimized Container with Increased Margins/Padding --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 4rem; /* Increased side padding for a cleaner, spacious layout */
+        }
+
+        /* --- Navbar --- */
+        header {
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(16px);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.25s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 25px var(--accent-glow);
+            transform: translateY(-3px);
+            background: #4f46e5;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #334155;
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: #1e293b;
+            border-color: #475569;
+            transform: translateY(-3px);
+            box-shadow: none;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 10rem 0 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: var(--accent-color);
+            opacity: 0.12;
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.25;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 8rem 0;
+            border-top: 1px solid #1e293b;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #1e293b;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: #4338ca;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing {
+            padding: 8rem 0;
+            background: rgba(19, 26, 44, 0.3);
+            border-top: 1px solid #1e293b;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 4rem 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+            transform: scale(1.03);
+        }
+
+        .badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            color: white;
+            padding: 0.35rem 1.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: #fff;
+        }
+
+        .price span {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2.5rem 0;
+            padding: 0;
+            color: var(--text-muted);
+            text-align: left;
+            width: 100%;
+        }
+
+        .pricing-features li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* --- CTA Footer Section --- */
+        .cta-banner {
+            padding: 8rem 0;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.03));
+            border-top: 1px solid #1e293b;
+        }
+
+        footer {
+            border-top: 1px solid #1e293b;
+            padding: 2.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 2.5rem; /* Slightly reduced on tablets */
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem; /* Safe padding for mobile devices */
+            }
+            .nav-links, nav .btn {
+                display: none;
+            }
+            .hero {
+                padding: 6rem 0 5rem 0;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .hero-cta .btn {
+                width: 100%;
+                max-width: 320px;
+            }
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">NexusAI</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                <a href="#pricing" class="btn">Deploy Agent</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Automate Your Workflow with <span>Autonomous AI Agents</span></h1>
+            <p>Deploy specialized, ready-to-work digital intelligence designed to handle customer support, data analysis, and marketing operations around the clock.</p>
+            <div class="hero-cta">
+                <a href="#pricing" class="btn">View Available Agents</a>
+                <a href="#features" class="btn btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Engineered for Production</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">🧠</span>
+                    <h3>Advanced Reasoning</h3>
+                    <p>Powered by Next-Gen LLMs to break down complex tasks, self-correct, and deliver hyper-accurate outputs.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Seamless Integration</h3>
+                    <p>Connects natively with Slack, Salesforce, GitHub, and thousands of other tools via robust API access.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Enterprise Security</h3>
+                    <p>SOC2 compliant architectures ensuring your proprietary business data remains private, isolated, and safe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your Digital Workforce</h2>
+            <div class="grid">
+                
+                <div class="pricing-card">
+                    <div>
+                        <h3>Support Agent</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">24/7 Customer Success Tier</p>
+                        <div class="price">$49<span>/mo</span></div>
+                        <ul class="pricing-features">
+                            <li>Instant ticket resolution</li>
+                            <li>Multilingual fluency (50+ languages)</li>
+                            <li>CRM & knowledge base sync</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="display: block; margin-top: 1.5rem;">Deploy Now</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="badge">Most Popular</div>
+                    <div>
+                        <h3>Analyst Agent</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Automated Market & Data Insights</p>
+                        <div class="price">$149<span>/mo</span></div>
+                        <ul class="pricing-features">
+                            <li>Real-time database querying</li>
+                            <li>PDF & Spreadsheet reporting</li>
+                            <li>Predictive anomaly alerts</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn" style="display: block; margin-top: 1.5rem;">Deploy Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div>
+                        <h3>Ops Custom Agent</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Tailored for Enterprise Workflows</p>
+                        <div class="price">Custom</div>
+                        <ul class="pricing-features">
+                            <li>Bespoke fine-tuned model training</li>
+                            <li>Dedicated on-premise deployment</li>
+                            <li>SLA support & dedicated rep</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="display: block; margin-top: 1.5rem;">Contact Sales</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to scale your operations?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto;">Get started in under 5 minutes. No coding required to initialize and run your first autonomous agent.</p>
+            <a href="#pricing" class="btn">Get Started Free</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 NexusAI Inc. All rights reserved.</p>
+        </div>
+    </footer>
+<div id="n8n-chat-container"></div>
+</body>
+<!-- n8n Chat Bot Widget Wrapper -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+    /* Forces the n8n widget wrapper to float elegantly over your landing page */
+    .n8n-chat-widget {
+        position: fixed !important;
+        bottom: 30px !important;
+        right: 30px !important;
+        z-index: 9999 !important;
+    }
+    /* Simple color adjustments for the dark theme match */
+    :root {
+        --chat--light-theme--primary: #6366f1 !important;
+        --chat--light-theme--bg: #131a2c !important;
+        --chat--light-theme--text: #f3f4f6 !important;
+    }
+</style>
+
+<script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        webhookUrl: 'http://localhost:5678/webhook/2c00114f-78cf-464a-a9e4-d000bb796035/chat',
+        target: '#n8n-chat-container',
+        mode: 'window', 
+        title: 'NexusAI Assistant',
+        subtitle: 'How can our AI workflow agents help you today?',
+        initialMessages: [
+            'Hello! 👋 Ask me anything about deploying our autonomous agents!'
+        ],
+        i18n: {
+            en: {
+                placeholder: 'Type your message here...',
+            }
+        }
+    });
+</script>
+</html>
