@@ -3,8 +3,6 @@
 
 <div align="center">
   
-  # 🤖 Enterprise GenAI & MLOps Platform
-  <p>پلتفرم پاسخگویی هوشمند و آنی با معماری Advanced RAG و پایش زنده سیستم</p>
 
   <video src="https://github.com/user-attachments/assets/687bb050-ba3f-49c7-bf98-3a06a1b4eb6e" width="100%" autoplay loop muted playsinline>
   </video>
