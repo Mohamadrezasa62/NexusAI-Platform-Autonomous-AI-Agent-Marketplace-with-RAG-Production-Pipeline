@@ -56,5 +56,5 @@ We have included a full recorded demonstration video in this repository. In this
 
 1. **Deploy Frontend:** Open `index.html` locally or host it on any web server.
 2. **Import Workflow:** Open your n8n instance, click **Import from File**, and upload `Ai Agent for Agent Sales Website with RAG.json`.
-3. **Seed Vector Store:** Load `MyWebsiteDetailsForRAG_DB.txt` into your n8n-connected Vector Store Document Loader (e.g., Qdrant, Pinecone, or Chroma) using Gemini Embeddings (768 Dimensions).
+3. **Seed Vector Store:** Load `MyWebsiteDetailsForRAG_DB.txt` into your n8n-connected Vector Store Document Loader (e.g., Qdrant, Pinecone, or Chroma) using Gemini Embeddings (3072 Dimensions).
 4. **Active & Connect:** Update the Webhook URL parameter inside the `index.html` widget configuration to match your live n8n node, and activate the workflow.
